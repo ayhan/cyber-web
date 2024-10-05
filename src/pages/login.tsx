@@ -5,7 +5,6 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -16,14 +15,18 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useAuth } from "@/context/auth";
+import { useRouter } from "next/router";
 
 export default function Component() {
+  const { login } = useAuth();
+  const router = useRouter();
+
   const FormSchema = z.object({
     username: z.string().min(2, {
       message: "Username must be at least 2 characters.",
@@ -51,7 +54,7 @@ export default function Component() {
     //   ),
     // })
 
-    console.log(data);
+    login(data);
   }
 
   return (

@@ -9,7 +9,21 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/context/auth";
+
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const { logout, user } = useAuth();
+
   return (
     <div className="flex h-screen p-4">
       <nav className="flex flex-col justify-between items-center">
@@ -54,10 +68,35 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           </li>
         </ul>
 
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="cyber avatar" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Avatar>
+                <AvatarImage src={user?.image ?? ""} alt={user?.name ?? ""} />
+                <AvatarFallback className="uppercase">
+                  {user?.username?.[0]}
+                </AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuLabel className="font-normal">
+              <div className="flex flex-col space-y-1">
+                <p className="text-sm font-medium leading-none">
+                  {user?.username}
+                </p>
+              </div>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              className="cursor-pointer"
+              onClick={() => logout()}
+            >
+              Log out
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </nav>
       <main className="w-full flex-1 overflow-hidden">{children}</main>
     </div>
