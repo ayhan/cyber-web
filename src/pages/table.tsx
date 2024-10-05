@@ -6,7 +6,7 @@ export default function Home() {
     <DashboardLayout>
       <main className="flex justify-center items-center h-screen">
         <ThemeToggle />
-        <h1>Dashboard</h1>
+        <h1>Table</h1>
       </main>
     </DashboardLayout>
   );
