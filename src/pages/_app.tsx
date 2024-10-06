@@ -6,6 +6,7 @@ import type { SWRConfiguration } from "swr";
 import { SWRConfig } from "swr";
 import fetcher from "@/service/fetcher";
 import AuthProvider from "@/context/auth";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,7 @@ const swrOptions: SWRConfiguration = {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
+      <Toaster />
       <SWRConfig
         value={{
           ...swrOptions,

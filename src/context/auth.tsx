@@ -50,7 +50,6 @@ const AuthProvider: FC<IProps> = (props) => {
 
       return login;
     } catch (error: any) {
-      console.error(error);
       return error.response;
     } finally {
       console.log("Finally Login");
