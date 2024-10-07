@@ -1,16 +1,12 @@
 import DashboardLayout from "@/components/dashboard-layout";
 import { Card, CardContent } from "@/components/ui/card";
-
 import PageContainer from "@/components/layout/page-container";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
 import { Plus } from "lucide-react";
-
 import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import VulnerabilityForm from "@/components/vulnerability/vulnerability-form";
-import VulnerabilityTable from "@/components/vulnerability/tables";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
