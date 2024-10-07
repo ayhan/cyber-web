@@ -75,7 +75,7 @@ function VulnerabilityRadarChart() {
         />
         <Radar dataKey="high" fill="hsl(var(--chart-2))" />
         <Radar dataKey="medium" fill="hsl(var(--chart-3))" />
-        {/* <ChartLegend className="mt-8" content={<ChartLegendContent />} /> */}
+        <ChartLegend className="mt-8" content={<ChartLegendContent />} />
       </RadarChart>
     </ChartContainer>
   );

@@ -133,7 +133,7 @@ export default function Home() {
               <div className="flex-1">
                 <VulnerabilityRadarChart />
               </div>
-              <Card className="h-fit">
+              <Card>
                 <CardContent className="p-3">
                   <p className="text-md font-bold">Code Findings</p>
                   <p className="text-xs text-muted-foreground">
@@ -193,9 +193,7 @@ export default function Home() {
                     </div>
                     <div className="text-xs text-muted-foreground">
                       A code injection technique that exploits a security
-                      vulnerability in an application. A code injection
-                      technique that exploits a security vulnerability in an
-                      application.
+                      vulnerability in an application.
                     </div>
                     <div className="text-xs text-muted-foreground">
                       A code injection technique that exploits a security
@@ -212,7 +210,4 @@ export default function Home() {
       </main>
     </DashboardLayout>
   );
-}
-{
-  /* <p className="text-xl font-bold">CVE-2023-512</p> */
 }
