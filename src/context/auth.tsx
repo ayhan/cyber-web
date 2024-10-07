@@ -26,13 +26,16 @@ const AuthProvider: FC<IProps> = (props) => {
 
   const [user, setUser] = useState<IUser | undefined>();
 
-  const { data: userInfo } = useSWR<IUser>(
+  const { data: userInfo, error } = useSWR<IUser>(
     cookies?.access_token ? `/api/auth/profile` : null
   );
 
   useEffect(() => {
+    // if (error?.status === 403) {
+    //   logout();
+    // }
     setUser(userInfo);
-  }, [userInfo]);
+  }, [userInfo, error]);
 
   const login = async (body: ILoginForm) => {
     try {

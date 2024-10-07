@@ -8,13 +8,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import GradientBorderHexagonIcon from "@/components/gradient-border-polygon-icon";
-import { MoonIcon } from "@radix-ui/react-icons";
-import { Separator } from "@/components/ui/separator";
+import { CheckIcon, MoonIcon } from "@radix-ui/react-icons";
+import VulnerabilityRadarChart from "@/components/radar-charts";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { AvatarFallback } from "@radix-ui/react-avatar";
 
 export default function Home() {
   return (
     <DashboardLayout>
-      <main className="flex">
+      <main className="flex space-x-2">
         <aside className="space-y-2">
           <Card>
             <CardHeader>
@@ -122,8 +124,95 @@ export default function Home() {
             </CardContent>
           </Card>
         </aside>
-        <h1 className="flex-1">Radar Charts</h1>
+        <section className="flex-1">
+          <Card className="w-full">
+            <CardHeader className="font-bold">
+              Finding Distribution Type
+            </CardHeader>
+            <CardContent className="p-3 flex">
+              <div className="flex-1">
+                <VulnerabilityRadarChart />
+              </div>
+              <Card className="h-fit">
+                <CardContent className="p-3">
+                  <p className="text-md font-bold">Code Findings</p>
+                  <p className="text-xs text-muted-foreground">
+                    from last scan
+                  </p>
+                  <p className="text-2xl font-bold py-4">300</p>
+                  {[1, 2, 3, 4].map(() => (
+                    <div className="flex items-center space-x-1 space-y-3">
+                      <GradientBorderHexagonIcon size={25} />
+                      <div>
+                        <p className="text-xs text-muted-foreground">
+                          Critical
+                        </p>
+                        <p className="text-sm">500</p>
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </CardContent>
+            <CardFooter className="block space-y-1">
+              <h3>Top 5 Code Finding</h3>
+              {[1, 2, 3].map(() => (
+                <Card className="w-full">
+                  <CardContent className="p-4 grid grid-flow-col gap-24">
+                    <div>
+                      <div className="flex">
+                        <GradientBorderHexagonIcon size={40} />
+                        <div>
+                          <div className="flex items-center">
+                            <CheckIcon />
+                            <p>Open</p>
+                          </div>
+                          <p className="text-xl font-bold">CVE-2023-512</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Avatar className="h-5 w-5">
+                          <AvatarImage
+                            src={"https://github.com/shadcn.png"}
+                            alt={"avatar"}
+                          />
+                          <AvatarFallback className="uppercase">
+                            U
+                          </AvatarFallback>
+                        </Avatar>
+                        <p className="text-xs text-muted-foreground">
+                          debbie.barker@example.com
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">
+                        CVSS score
+                      </p>
+                      <p className="font-bold text-md">20</p>
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      A code injection technique that exploits a security
+                      vulnerability in an application. A code injection
+                      technique that exploits a security vulnerability in an
+                      application.
+                    </div>
+                    <div className="text-xs text-muted-foreground">
+                      A code injection technique that exploits a security
+                      vulnerability in an application. A code injection
+                      technique that exploits a security vulnerability in an
+                      application.
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </CardFooter>
+          </Card>
+        </section>
       </main>
     </DashboardLayout>
   );
+}
+{
+  /* <p className="text-xl font-bold">CVE-2023-512</p> */
 }

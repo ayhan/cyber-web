@@ -9,11 +9,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <nav className="flex flex-col justify-between items-center">
         <Logo width={48} height={38} />
         <ThemeToggle />
-
         <NavList></NavList>
         <UserDropdown></UserDropdown>
       </nav>
-
       <main className="w-full flex-1 overflow-hidden">{children}</main>
     </div>
   );
