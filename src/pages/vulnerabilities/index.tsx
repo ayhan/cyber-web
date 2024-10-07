@@ -11,16 +11,12 @@ import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import VulnerabilityForm from "@/components/vulnerability/vulnerability-form";
 import VulnerabilityTable from "@/components/vulnerability/tables";
-import useSWR from "swr";
+import useVulnerabilities from "@/hooks/useVulnerabilities";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
 
-  const {
-    data: vulnerabilities,
-    error,
-    isLoading,
-  } = useSWR("/api/vulnerabilities");
+  const { vulnerabilities } = useVulnerabilities();
 
   return (
     <DashboardLayout>
@@ -39,7 +35,7 @@ export default function Home() {
                   onClose={() => setOpen(false)}
                   title="Upadate Or New"
                 >
-                  <VulnerabilityForm />
+                  <VulnerabilityForm setOpenModal={setOpen} />
                 </Modal>
               </div>
               <Separator />
