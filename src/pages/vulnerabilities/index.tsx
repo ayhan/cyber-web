@@ -11,42 +11,16 @@ import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import VulnerabilityForm from "@/components/vulnerability/vulnerability-form";
 import VulnerabilityTable from "@/components/vulnerability/tables";
+import useSWR from "swr";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
 
-  const vulnerabilities: any[] = [
-    {
-      id: 24,
-      name: "SQL Injection",
-      description:
-        "A code injection technique that exploits a security vulnerability in an application.",
-      severity: "High",
-      cvss: "7.5",
-      cve: "CVE-2021-XXXX",
-      status: "open",
-    },
-    {
-      id: 24,
-      name: "SQL Injection",
-      description:
-        "A code injection technique that exploits a security vulnerability in an application.",
-      severity: "High",
-      cvss: "7.5",
-      cve: "CVE-2021-XXXX",
-      status: "open",
-    },
-    {
-      id: 24,
-      name: "SQL Injection",
-      description:
-        "A code injection technique that exploits a security vulnerability in an application.",
-      severity: "High",
-      cvss: "7.5",
-      cve: "CVE-2021-XXXX",
-      status: "open",
-    },
-  ];
+  const {
+    data: vulnerabilities,
+    error,
+    isLoading,
+  } = useSWR("/api/vulnerabilities");
 
   return (
     <DashboardLayout>
@@ -55,7 +29,7 @@ export default function Home() {
           <PageContainer>
             <div className="space-y-4">
               <div className="flex items-start justify-between">
-                <h3>{`Vulnerability (${vulnerabilities.length})`}</h3>
+                <h3>{`Vulnerability (${vulnerabilities?.length})`}</h3>
 
                 <Button onClick={() => setOpen(true)}>
                   <Plus className="mr-2 h-4 w-4" /> Add New
@@ -69,10 +43,12 @@ export default function Home() {
                 </Modal>
               </div>
               <Separator />
-              <VulnerabilityTable
-                data={vulnerabilities}
-                totalData={vulnerabilities.length}
-              />
+              {vulnerabilities && (
+                <VulnerabilityTable
+                  data={vulnerabilities}
+                  totalData={vulnerabilities?.length}
+                />
+              )}
             </div>
           </PageContainer>
         </CardContent>
