@@ -25,7 +25,7 @@ const NavList = () => {
         </Link>
       </li>
       <li className="py-4">
-        <Link href={"table"}>
+        <Link href={"/vulnerabilities"}>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>

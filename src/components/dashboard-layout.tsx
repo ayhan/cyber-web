@@ -2,12 +2,15 @@ import UserDropdown from "@/components/user-dropdown";
 import NavList from "@/components/nav-list";
 import Logo from "@/components/logo";
 import ThemeToggle from "./theme-toggle";
+import Link from "next/link";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-screen p-4 space-x-4">
       <nav className="flex flex-col justify-between items-center">
-        <Logo width={48} height={38} />
+        <Link href={"/"}>
+          <Logo width={48} height={38} />
+        </Link>
         <ThemeToggle />
         <NavList></NavList>
         <UserDropdown></UserDropdown>
