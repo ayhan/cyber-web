@@ -1,16 +1,6 @@
-"use client";
-
-import { ArrowDownFromLine, ArrowUpFromLine, TrendingUp } from "lucide-react";
+import { ArrowDownFromLine, ArrowUpFromLine } from "lucide-react";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
@@ -23,12 +13,12 @@ import {
 export const description = "A radar chart with icons";
 
 const chartData = [
-  { month: "January", critical: 186, high: 80, medium: 120 },
-  { month: "February", critical: 305, high: 200, medium: 250 },
-  { month: "March", critical: 237, high: 120, medium: 160 },
-  { month: "April", critical: 73, high: 190, medium: 110 },
-  { month: "May", critical: 209, high: 130, medium: 160 },
-  { month: "June", critical: 214, high: 140, medium: 180 },
+  { month: "Code", critical: 186, high: 80, medium: 120 },
+  { month: "OSS", critical: 305, high: 200, medium: 250 },
+  { month: "Ai", critical: 237, high: 120, medium: 160 },
+  { month: "Container", critical: 73, high: 190, medium: 110 },
+  { month: "Other", critical: 209, high: 130, medium: 160 },
+  { month: "All", critical: 214, high: 140, medium: 180 },
 ];
 
 const chartConfig = {
