@@ -21,7 +21,7 @@ const successHandler = (response: AxiosResponse) => {
 };
 
 const API = axios.create({
-  baseURL: "?",
+  baseURL: "http://localhost:8080",
   timeout: 8000,
 });
 

@@ -27,7 +27,7 @@ const AuthProvider: FC<IProps> = (props) => {
   const [user, setUser] = useState<IUser | undefined>();
 
   const { data: userInfo } = useSWR<IUser>(
-    cookies?.access_token ? `http://localhost:8080/api/auth/profile` : null
+    cookies?.access_token ? `/api/auth/profile` : null
   );
 
   useEffect(() => {
@@ -36,10 +36,7 @@ const AuthProvider: FC<IProps> = (props) => {
 
   const login = async (body: ILoginForm) => {
     try {
-      const login = await API.post(
-        "http://localhost:8080/api/auth/login",
-        body
-      );
+      const login = await API.post("/api/auth/login", body);
 
       setCookie(null, ACCESS_TOKEN, login?.data.access_token, {
         path: "/",
