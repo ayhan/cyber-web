@@ -9,8 +9,9 @@ import API from "@/service/middleware";
 
 interface IAuthContext {
   user: IUser | undefined;
-  login: (body: ILoginForm) => Promise<void>;
-  logout: () => void;
+  Login: (body: ILoginForm) => Promise<void>;
+  Logout: () => void;
+  Register: (body: ILoginForm) => Promise<void>;
 }
 
 export const Auth = createContext<IAuthContext | null>(null);
@@ -43,7 +44,7 @@ const AuthProvider: FC<IProps> = (props) => {
     setUser(userInfo);
   }, [userInfo, error]);
 
-  const login = async (body: ILoginForm) => {
+  const Login = async (body: ILoginForm) => {
     try {
       const login = await API.post("/api/auth/login", body);
 
@@ -62,7 +63,21 @@ const AuthProvider: FC<IProps> = (props) => {
     }
   };
 
-  const logout = () => {
+  const Register = async (body: ILoginForm) => {
+    try {
+      const response = await API.post("/api/auth/register", body);
+
+      router.push(`/login?username=${response.data.username}`);
+
+      return response;
+    } catch (error: any) {
+      return error.response;
+    } finally {
+      console.log("Finally Login");
+    }
+  };
+
+  const Logout = () => {
     try {
       destroyCookie(null, ACCESS_TOKEN);
       router.push("/login");
@@ -74,8 +89,9 @@ const AuthProvider: FC<IProps> = (props) => {
   return (
     <Auth.Provider
       value={{
-        login,
-        logout,
+        Login,
+        Register,
+        Logout,
         user,
       }}
     >

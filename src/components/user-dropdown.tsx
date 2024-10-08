@@ -12,7 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/context/auth";
 
 const UserDropdown = () => {
-  const { logout, user } = useAuth();
+  const { Logout, user } = useAuth();
 
   return (
     <DropdownMenu>
@@ -33,7 +33,7 @@ const UserDropdown = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" onClick={() => logout()}>
+        <DropdownMenuItem className="cursor-pointer" onClick={() => Logout()}>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

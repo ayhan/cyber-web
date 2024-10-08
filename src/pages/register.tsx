@@ -22,14 +22,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useAuth } from "@/context/auth";
-import { useRouter } from "next/router";
 import Logo from "@/components/logo";
 import Link from "next/link";
 
 export default function Component() {
-  const { Login } = useAuth();
-  const router = useRouter();
-  const { query } = router;
+  const { Register } = useAuth();
 
   const FormSchema = z.object({
     username: z.string().min(2, {
@@ -43,13 +40,13 @@ export default function Component() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: query.username ? query.username.toString() : "",
+      username: "",
       password: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    Login(data);
+    Register(data);
   }
 
   return (
@@ -60,9 +57,9 @@ export default function Component() {
       ></Logo>
       <Card className="mx-auto max-w-sm">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Login</CardTitle>
+          <CardTitle className="text-2xl font-bold">Register</CardTitle>
           <CardDescription>
-            Enter your email and password to login to your account
+            Enter your information to register to your application
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -109,7 +106,7 @@ export default function Component() {
                   )}
                 />
                 <Button type="submit" className="w-full">
-                  Login
+                  Register
                 </Button>
               </form>
             </Form>
@@ -118,14 +115,11 @@ export default function Component() {
         <CardFooter>
           <div className="">
             <span className="text-sm text-muted-foreground">
-              If you dont have any account go to
+              If you have any account go to
             </span>
-            <Link
-              className="text-sm underline cursor-pointer"
-              href={"/register"}
-            >
+            <Link className="text-sm underline cursor-pointer" href={"/login"}>
               <Button variant="link" className="pl-1">
-                Register
+                Login
               </Button>
             </Link>
           </div>
