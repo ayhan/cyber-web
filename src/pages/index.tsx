@@ -13,6 +13,7 @@ import { AvatarFallback } from "@radix-ui/react-avatar";
 import SeverityIcon from "@/components/severityIcon";
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
+import { useTheme } from "next-themes";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
@@ -32,6 +33,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Home = () => {
+  const { theme } = useTheme();
+
   const findingsData = [
     { id: 1, name: "Critical", number: 500 },
     { id: 2, name: "High", number: 300 },
@@ -194,7 +197,11 @@ const Home = () => {
           </Card>
         </aside>
         <section className="flex-1">
-          <Card className="w-full gradient-background">
+          <Card
+            className={`w-full ${
+              theme === "dark" ? "gradient-background" : ""
+            }`}
+          >
             <CardHeader className="font-bold">
               Finding Distribution Type
             </CardHeader>
@@ -237,8 +244,8 @@ const Home = () => {
             </CardContent>
             <CardFooter className="block space-y-1">
               <h3>Top 5 Code Findings</h3>
-              {[1, 2, 3].map((x) => (
-                <Card key={x} className="w-full">
+              {[1, 2, 3].map((el) => (
+                <Card key={el} className="w-full">
                   <CardContent className="p-4 grid grid-flow-col gap-24">
                     <div>
                       <div className="flex">

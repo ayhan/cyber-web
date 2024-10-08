@@ -43,6 +43,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const VulnerabilitiesTable = () => {
+  const router = useRouter();
+  const { vulnerabilities, setVulnerabilityParams, vulnerabilityIsLoading } =
+    useVulnerability();
   const {
     severityFilter,
     setSeverityFilter,
@@ -53,12 +56,7 @@ const VulnerabilitiesTable = () => {
     setSearchQuery,
   } = useVulnerabilityTableFilters();
 
-  const router = useRouter();
-
   const [open, setOpen] = useState(false);
-
-  const { vulnerabilities, setVulnerabilityParams, vulnerabilityIsLoading } =
-    useVulnerability();
 
   useEffect(() => {
     setVulnerabilityParams("?" + router.asPath.split("?")[1]);

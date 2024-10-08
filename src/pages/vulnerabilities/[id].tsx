@@ -24,7 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {},
   };
 };
-
 export default function Home() {
   const router = useRouter();
   const { query } = router;
@@ -35,10 +34,10 @@ export default function Home() {
 
   return (
     <DashboardLayout>
-      <Card>
+      <Card className="h-screen">
         <CardContent>
           <div className="space-y-4">
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-center">
               {vulnerability && (
                 <VulnerabilityForm vulnerability={vulnerability} />
               )}

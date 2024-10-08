@@ -8,10 +8,15 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-screen p-4 space-x-4">
       <nav className="flex flex-col justify-between items-center">
-        <Link href={"/"}>
-          <Logo width={48} height={38} />
-        </Link>
-        <ThemeToggle />
+        <div className="space-y-4">
+          <Link href={"/"}>
+            <Logo width={48} height={38} />
+          </Link>
+
+          <div className="text-center">
+            <ThemeToggle />
+          </div>
+        </div>
         <NavList></NavList>
         <UserDropdown></UserDropdown>
       </nav>
