@@ -26,7 +26,7 @@ import { useRouter } from "next/router";
 import Logo from "@/components/logo";
 import Link from "next/link";
 
-export default function Component() {
+const Login = () => {
   const { Login } = useAuth();
   const router = useRouter();
   const { query } = router;
@@ -133,4 +133,5 @@ export default function Component() {
       </Card>
     </main>
   );
-}
+};
+export default Login;

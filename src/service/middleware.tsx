@@ -14,9 +14,7 @@ const errorHandler = (error: any) => {
   });
 };
 
-const successHandler = (response: AxiosResponse) => {
-  console.log("🔥 ~ response:", response);
-};
+const successHandler = (response: AxiosResponse) => {};
 
 const API = axios.create({
   baseURL: "http://localhost:8080",

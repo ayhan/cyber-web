@@ -25,7 +25,7 @@ import { useAuth } from "@/context/auth";
 import Logo from "@/components/logo";
 import Link from "next/link";
 
-export default function Component() {
+const Register = () => {
   const { Register } = useAuth();
 
   const FormSchema = z.object({
@@ -127,4 +127,6 @@ export default function Component() {
       </Card>
     </main>
   );
-}
+};
+
+export default Register;

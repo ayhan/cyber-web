@@ -1,4 +1,3 @@
-import ThemeToggle from "@/components/theme-toggle";
 import DashboardLayout from "@/components/dashboard-layout";
 import {
   Card,
@@ -13,7 +12,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import SeverityIcon from "@/components/severityIcon";
 
-export default function Home() {
+const Home = () => {
   return (
     <DashboardLayout>
       <main className="flex space-x-2">
@@ -212,4 +211,5 @@ export default function Home() {
       </main>
     </DashboardLayout>
   );
-}
+};
+export default Home;

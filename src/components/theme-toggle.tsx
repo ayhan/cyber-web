@@ -2,8 +2,7 @@ import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
-type CompProps = {};
-export default function ThemeToggle({}: CompProps) {
+export default function ThemeToggle() {
   const { setTheme, theme } = useTheme();
   return (
     <>

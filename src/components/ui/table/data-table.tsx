@@ -35,6 +35,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   totalItems: number;
   pageSizeOptions?: number[];
+  isLoading?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -42,6 +43,7 @@ export function DataTable<TData, TValue>({
   data,
   totalItems,
   pageSizeOptions = [10, 20, 30, 40, 50],
+  isLoading,
 }: DataTableProps<TData, TValue>) {
   const [currentPage, setCurrentPage] = useQueryState(
     "page",
