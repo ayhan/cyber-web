@@ -1,7 +1,7 @@
 import React from "react";
 
 interface GradientBorderPolygonIconProps {
-  sides?: number; // Kenar sayısı (altıgen, beşgen, vb.)
+  sides?: number;
   size?: number;
   borderGradientStart?: string;
   borderGradientEnd?: string;
@@ -18,7 +18,7 @@ export default function GradientBorderPolygonIcon({
   borderGradientEnd = "hsl(var(--secondary))",
   fillGradientStart = "hsl(var(--primary))",
   fillGradientEnd = "hsl(var(--secondary))",
-  borderWidth = 4,
+  borderWidth = 3,
   className = "",
 }: GradientBorderPolygonIconProps) {
   const outerPoints = Array.from({ length: sides }, (_, i) => {
@@ -51,15 +51,15 @@ export default function GradientBorderPolygonIcon({
       <defs>
         <linearGradient
           id={borderGradientId}
-          x1="0%"
+          x1="50%"
           y1="0%"
-          x2="100%"
-          y2="100%"
+          x2="75%"
+          y2="75%"
         >
           <stop offset="0%" stopColor={borderGradientStart} />
           <stop offset="100%" stopColor={borderGradientEnd} />
         </linearGradient>
-        <linearGradient id={fillGradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={fillGradientId} x1="50%" y1="0%" x2="75%" y2="75%">
           <stop offset="0%" stopColor={fillGradientStart} />
           <stop offset="100%" stopColor={fillGradientEnd} />
         </linearGradient>

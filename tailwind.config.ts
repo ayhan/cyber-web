@@ -48,6 +48,18 @@ const config: Config = {
         danger: {
           DEFAULT: "hsl(var(--danger))",
         },
+        critical: {
+          red: "hsl(var(--critical-red))",
+        },
+        high: {
+          orange: "hsl(var(--high-orange))",
+        },
+        medium: {
+          yellow: "hsl(var(--medium-yellow))",
+        },
+        low: {
+          gray: "hsl(var(--low-gray))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ridangerng: "hsl(var(--ring))",

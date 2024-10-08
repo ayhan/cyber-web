@@ -7,11 +7,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import GradientBorderHexagonIcon from "@/components/gradient-border-polygon-icon";
 import { CheckIcon, MoonIcon } from "@radix-ui/react-icons";
 import VulnerabilityRadarChart from "@/components/radar-charts";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
+import SeverityIcon from "@/components/severityIcon";
 
 export default function Home() {
   return (
@@ -31,7 +31,7 @@ export default function Home() {
             <CardContent className="flex justify-between">
               {[1, 2, 3, 4].map(() => (
                 <div>
-                  <GradientBorderHexagonIcon />
+                  <SeverityIcon severity="critical" />
                   <p className="text-xs text-muted-foreground">Critical</p>
                   <p className="text-sm">500</p>
                 </div>
@@ -142,7 +142,8 @@ export default function Home() {
                   <p className="text-2xl font-bold py-4">300</p>
                   {[1, 2, 3, 4].map(() => (
                     <div className="flex items-center space-x-1 space-y-3">
-                      <GradientBorderHexagonIcon size={25} />
+                      <SeverityIcon size={25} severity="critical" />
+
                       <div>
                         <p className="text-xs text-muted-foreground">
                           Critical
@@ -161,7 +162,8 @@ export default function Home() {
                   <CardContent className="p-4 grid grid-flow-col gap-24">
                     <div>
                       <div className="flex">
-                        <GradientBorderHexagonIcon size={40} />
+                        <SeverityIcon size={40} severity="critical" />
+
                         <div>
                           <div className="flex items-center">
                             <CheckIcon />

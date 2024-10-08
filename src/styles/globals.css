@@ -34,6 +34,10 @@
 
     --card-start: 226, 88%, 54%;
     --card-end: 223, 66%, 12%;
+    --critical-red: 0, 85%, 60%;
+    --high-orange: 32, 85%, 55%;
+    --medium-yellow: 45, 85%, 50%;
+    --low-gray: 210, 10%, 70%;
   }
   .dark {
     --background: 230, 35%, 7%;
@@ -65,6 +69,11 @@
 
     --card-start: 230, 60%, 20%;
     --card-end: 250, 60%, 30%;
+
+    --critical-red: 0, 85%, 60%;
+    --high-orange: 32, 85%, 55%;
+    --medium-yellow: 45, 85%, 50%;
+    --low-gray: 210, 10%, 70%;
   }
 }
 
