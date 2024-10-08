@@ -11,12 +11,12 @@ import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import VulnerabilityForm from "@/components/vulnerability/vulnerability-form";
 import VulnerabilityTable from "@/components/vulnerability/tables";
-import useVulnerabilities from "@/hooks/useVulnerabilities";
+import useVulnerability from "@/hooks/useVulnerability";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
 
-  const { vulnerabilities } = useVulnerabilities();
+  const { vulnerabilities } = useVulnerability();
 
   return (
     <DashboardLayout>
