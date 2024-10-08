@@ -21,7 +21,7 @@ export default function Home() {
           <Card>
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
-                <p className="text-md font-bold">60 Resolved</p>
+                <p className="text-lg font-bold">60 Resolved</p>
                 <div className="flex items-center space-x-2">
                   <p className="text-lg font-bold">+230</p>
                   <p className="text-xs text-success">+45%</p>
@@ -42,7 +42,7 @@ export default function Home() {
             {[1, 2, 3, 4].map(() => (
               <Card className="w-full">
                 <CardContent className="p-3">
-                  <p className="text-md font-bold">2 Finding</p>
+                  <p className="text-lg font-bold">2 Finding</p>
                   <div className="flex items-center justify-between space-x-4">
                     <p className="text-xs text-muted-foreground">
                       All time data
@@ -59,7 +59,7 @@ export default function Home() {
           <Card className="w-full">
             <CardContent className="grid grid-cols-2 p-3">
               <div className="border-r-2 pr-4">
-                <p className="text-md font-bold pb-2">Compliance</p>
+                <p className="text-lg font-bold pb-2">Compliance</p>
                 <ul className="space-y-4">
                   <li className="flex items-center justify-between text-xs text-muted-foreground">
                     <span>OSWAP 2017</span>
@@ -82,7 +82,7 @@ export default function Home() {
                 </ul>
               </div>
               <div className="pl-4 space-y-1">
-                <p className="text-md font-bold">Packages</p>
+                <p className="text-lg font-bold">Packages</p>
                 <div className="flex items-center space-x-1">
                   <p className="text-xs text-muted-foreground">Total</p>
                   <p className="text-sm font-bold">2983</p>
@@ -108,7 +108,7 @@ export default function Home() {
           </Card>
           <Card className="w-full">
             <CardContent className="p-3">
-              <p className="text-md font-bold">
+              <p className="text-lg font-bold">
                 Top 5 Packages with Vulnerabilities
               </p>
               {[1, 2, 3, 4, 5].map(() => (

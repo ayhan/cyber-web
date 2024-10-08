@@ -24,17 +24,17 @@ const chartData = [
 const chartConfig = {
   critical: {
     label: "Critical",
-    color: "hsl(var(--chart-1))",
+    color: "hsl(var(--critical-red))",
     icon: ArrowDownFromLine,
   },
   high: {
     label: "high",
-    color: "hsl(var(--chart-2))",
+    color: "hsl(var(--high-orange))",
     icon: ArrowUpFromLine,
   },
   medium: {
     label: "medium",
-    color: "hsl(var(--chart-3))",
+    color: "hsl(var(--medium-yellow))",
     icon: ArrowUpFromLine,
   },
 } satisfies ChartConfig;
@@ -60,11 +60,11 @@ function VulnerabilityRadarChart() {
         <PolarGrid />
         <Radar
           dataKey="critical"
-          fill="hsl(var(--chart-1))"
+          fill="hsl(var(--critical-red))"
           fillOpacity={0.6}
         />
-        <Radar dataKey="high" fill="hsl(var(--chart-2))" />
-        <Radar dataKey="medium" fill="hsl(var(--chart-3))" />
+        <Radar dataKey="high" fill="hsl(var(--high-orange))" />
+        <Radar dataKey="medium" fill="hsl(var(--medium-yellow))" />
         <ChartLegend className="mt-8" content={<ChartLegendContent />} />
       </RadarChart>
     </ChartContainer>

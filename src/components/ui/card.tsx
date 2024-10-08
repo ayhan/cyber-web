@@ -15,7 +15,7 @@ const Card = React.forwardRef<
     {...props}
   />
 
-  // <div className="border text-card-foreground shadow p-px bg-gradient-to-l from-card-start to-card-end h-fit">
+  // <div className="text-card-foreground shadow p-px bg-gradient-to-r from-card-start to-background h-fit">
   //   <div ref={ref} className={cn("bg-card", className)} {...props} />
   // </div>
 ));
