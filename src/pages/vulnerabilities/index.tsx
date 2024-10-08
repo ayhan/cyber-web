@@ -60,7 +60,7 @@ const VulnerabilitiesTable = () => {
 
   useEffect(() => {
     setVulnerabilityParams("?" + router.asPath.split("?")[1]);
-  }, [router.asPath]);
+  }, [router]);
 
   return (
     <DashboardLayout>
