@@ -6,8 +6,6 @@ import axios, {
 import { parseCookies } from "nookies";
 import { toast } from "sonner";
 
-const cookies = parseCookies();
-
 const errorHandler = (error: any) => {
   toast.error("Error", {
     description: error.response.data.error,
@@ -27,6 +25,7 @@ const API = axios.create({
 
 API.interceptors.request.use(
   (request: InternalAxiosRequestConfig) => {
+    const cookies = parseCookies();
     request.headers.Authorization = `Bearer ${cookies?.access_token}`;
     return request;
   },

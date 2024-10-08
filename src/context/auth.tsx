@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { parseCookies, setCookie } from "nookies";
+import { parseCookies, setCookie, destroyCookie } from "nookies";
 import { createContext, FC, useContext, useEffect, useState } from "react";
 import useSWR from "swr";
 
@@ -26,14 +26,20 @@ const AuthProvider: FC<IProps> = (props) => {
 
   const [user, setUser] = useState<IUser | undefined>();
 
-  const { data: userInfo, error } = useSWR<IUser>(
-    cookies?.access_token ? `/api/auth/profile` : null
-  );
+  const {
+    data: userInfo,
+    error,
+    mutate: MutateProfile,
+  } = useSWR<IUser>(cookies?.access_token ? `/api/auth/profile` : null, {
+    onError: (error) => {
+      if (error.response.status === 403) {
+        destroyCookie(null, ACCESS_TOKEN);
+        router.push("/login");
+      }
+    },
+  });
 
   useEffect(() => {
-    // if (error?.status === 403) {
-    //   logout();
-    // }
     setUser(userInfo);
   }, [userInfo, error]);
 
@@ -58,8 +64,7 @@ const AuthProvider: FC<IProps> = (props) => {
 
   const logout = () => {
     try {
-      document.cookie =
-        ACCESS_TOKEN + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      destroyCookie(null, ACCESS_TOKEN);
       router.push("/login");
     } finally {
       console.log("Logout Finally");
