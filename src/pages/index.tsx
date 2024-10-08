@@ -218,8 +218,8 @@ const Home = () => {
             </CardContent>
             <CardFooter className="block space-y-1">
               <h3>Top 5 Code Findings</h3>
-              {[1, 2, 3].map(() => (
-                <Card className="w-full">
+              {[1, 2, 3].map((x) => (
+                <Card key={x} className="w-full">
                   <CardContent className="p-4 grid grid-flow-col gap-24">
                     <div>
                       <div className="flex">

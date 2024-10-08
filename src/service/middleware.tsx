@@ -14,7 +14,7 @@ const errorHandler = (error: any) => {
   });
 };
 
-const successHandler = (response: AxiosResponse) => {};
+const successHandler = () => {};
 
 const API = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -34,7 +34,7 @@ API.interceptors.request.use(
 
 API.interceptors.response.use(
   (response: AxiosResponse) => {
-    successHandler(response);
+    successHandler();
     return response;
   },
   (error: AxiosError) => {

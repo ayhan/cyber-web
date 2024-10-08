@@ -27,18 +27,17 @@ const AuthProvider: FC<IProps> = (props) => {
 
   const [user, setUser] = useState<IUser | undefined>();
 
-  const {
-    data: userInfo,
-    error,
-    mutate: MutateProfile,
-  } = useSWR<IUser>(cookies?.access_token ? `/api/auth/profile` : null, {
-    onError: (error) => {
-      if (error.response.status === 403) {
-        destroyCookie(null, ACCESS_TOKEN);
-        router.push("/login");
-      }
-    },
-  });
+  const { data: userInfo, error } = useSWR<IUser>(
+    cookies?.access_token ? `/api/auth/profile` : null,
+    {
+      onError: (error) => {
+        if (error.response.status === 403) {
+          destroyCookie(null, ACCESS_TOKEN);
+          router.push("/login");
+        }
+      },
+    }
+  );
 
   useEffect(() => {
     setUser(userInfo);

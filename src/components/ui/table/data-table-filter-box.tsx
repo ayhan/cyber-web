@@ -39,7 +39,6 @@ interface FilterBoxProps {
 }
 
 export function DataTableFilterBox({
-  filterKey,
   title,
   options,
   setFilterValue,

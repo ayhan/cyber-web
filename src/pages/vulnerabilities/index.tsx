@@ -36,16 +36,6 @@ const VulnerabilitiesTable = () => {
 
   const router = useRouter();
 
-  const { query } = router;
-  const { page, q, severity, limit } = query;
-
-  const filters = {
-    page,
-    limit,
-    q,
-    severity,
-  };
-
   const [open, setOpen] = useState(false);
 
   const { vulnerabilities, setVulnerabilityParams, vulnerabilityIsLoading } =
@@ -53,7 +43,7 @@ const VulnerabilitiesTable = () => {
 
   useEffect(() => {
     setVulnerabilityParams("?" + router.asPath.split("?")[1]);
-  }, [router]);
+  }, [router.asPath]);
 
   return (
     <DashboardLayout>
