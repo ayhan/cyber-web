@@ -5,6 +5,26 @@ import VulnerabilityForm from "@/components/vulnerability/vulnerability-form";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
+import { GetServerSideProps } from "next";
+import { parseCookies } from "nookies";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context;
+  const cookies = parseCookies({ req });
+
+  const accessToken = cookies.access_token;
+
+  if (!accessToken) {
+    res.writeHead(302, { Location: "/login" });
+    res.end();
+    return { props: {} };
+  }
+
+  return {
+    props: {},
+  };
+};
+
 export default function Home() {
   const router = useRouter();
   const { query } = router;

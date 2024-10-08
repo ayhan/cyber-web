@@ -11,6 +11,25 @@ import VulnerabilityRadarChart from "@/components/radar-charts";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
 import SeverityIcon from "@/components/severityIcon";
+import { GetServerSideProps } from "next";
+import { parseCookies } from "nookies";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context;
+  const cookies = parseCookies({ req });
+
+  const accessToken = cookies.access_token;
+
+  if (!accessToken) {
+    res.writeHead(302, { Location: "/login" });
+    res.end();
+    return { props: {} };
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const Home = () => {
   const findingsData = [

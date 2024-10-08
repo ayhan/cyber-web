@@ -22,6 +22,25 @@ import {
   SEVERITY_OPTIONS,
   useVulnerabilityTableFilters,
 } from "@/components/vulnerability/tables/use-vulnerability-table-filters";
+import { GetServerSideProps } from "next";
+import { parseCookies } from "nookies";
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context;
+  const cookies = parseCookies({ req });
+
+  const accessToken = cookies.access_token;
+
+  if (!accessToken) {
+    res.writeHead(302, { Location: "/login" });
+    res.end();
+    return { props: {} };
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const VulnerabilitiesTable = () => {
   const {
