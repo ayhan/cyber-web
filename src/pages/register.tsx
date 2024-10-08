@@ -50,7 +50,7 @@ const Register = () => {
   }
 
   return (
-    <main className="h-screen flex items-center justify-items-center relative">
+    <main className="h-screen flex items-center justify-center relative">
       <Logo
         width={640}
         className="absolute left-1/2 top-1/2 transform -translate-x-[75%] -translate-y-1/2 -z-10 opacity-25"

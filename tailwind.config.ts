@@ -18,6 +18,11 @@ const config: Config = {
           start: "hsl(var(--card-start))",
           end: "hsl(var(--card-end))",
         },
+        percentage: {
+          DEFAULT: "hsl(var(--card))",
+          start: "hsl(var(--percentage-start))",
+          end: "hsl(var(--percentage-end))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -75,6 +80,10 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        success: "0 2px 4px rgba(34, 197, 94, 0.6)",
+        danger: "0 2px 4px rgba(239, 68, 68, 0.6)",
       },
     },
   },

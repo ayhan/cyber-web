@@ -32,9 +32,10 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    --card-start: 226, 88%, 54%;
-    --card-end: 223, 66%, 12%;
-    --critical-red: 0, 85%, 60%;
+    --card-start: 220, 13%, 91%;
+    --card-end: 210, 20%, 98%;
+
+    --critical-red: 348, 68%, 57%;
     --high-orange: 32, 85%, 55%;
     --medium-yellow: 45, 85%, 50%;
     --low-gray: 210, 10%, 70%;
@@ -67,13 +68,16 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --card-start: 225, 74%, 22%;
-    --card-end: 250, 60%, 30%;
+    --card-start: 230, 35%, 8%;
+    --card-end: 230, 35%, 16%;
 
-    --critical-red: 0, 85%, 60%;
-    --high-orange: 32, 85%, 55%;
-    --medium-yellow: 45, 85%, 50%;
-    --low-gray: 210, 10%, 70%;
+    --percentage-start: 226, 74%, 43%;
+    --percentage-end: 227, 69%, 16%;
+
+    --critical-red: 350, 83%, 60%;
+    --high-orange: 218, 24%, 40%;
+    --medium-yellow: 16, 24%, 56%;
+    --low-gray: 218, 24%, 40%;
   }
 }
 
@@ -99,4 +103,12 @@
 
 .clipPath-polygon {
   clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 15% 100%, 0 85%);
+}
+
+.gradient-background {
+  background: radial-gradient(
+    circle at top left,
+    hsl(229, 63%, 25%) 0%,
+    hsl(229, 63%, 8%) 60%
+  );
 }

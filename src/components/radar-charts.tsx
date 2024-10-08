@@ -13,12 +13,12 @@ import {
 export const description = "A radar chart with icons";
 
 const chartData = [
-  { month: "Code", critical: 186, high: 80, medium: 120 },
-  { month: "OSS", critical: 305, high: 200, medium: 250 },
-  { month: "Ai", critical: 237, high: 120, medium: 160 },
-  { month: "Container", critical: 73, high: 190, medium: 110 },
-  { month: "Other", critical: 209, high: 130, medium: 160 },
-  { month: "All", critical: 214, high: 140, medium: 180 },
+  { month: "Code", critical: 150, high: 280, medium: 270 },
+  { month: "OSS", critical: 250, high: 280, medium: 220 },
+  { month: "Ai", critical: 150, high: 280, medium: 270 },
+  { month: "Container", critical: 150, high: 280, medium: 200 },
+  { month: "Other", critical: 200, high: 280, medium: 220 },
+  { month: "All", critical: 160, high: 280, medium: 250 },
 ];
 
 const chartConfig = {
@@ -61,10 +61,18 @@ function VulnerabilityRadarChart() {
         <Radar
           dataKey="critical"
           fill="hsl(var(--critical-red))"
-          fillOpacity={0.6}
+          fillOpacity={0.9}
         />
-        <Radar dataKey="high" fill="hsl(var(--high-orange))" />
-        <Radar dataKey="medium" fill="hsl(var(--medium-yellow))" />
+        <Radar
+          dataKey="high"
+          fill="hsl(var(--high-orange))"
+          fillOpacity={0.3}
+        />
+        <Radar
+          dataKey="medium"
+          fill="hsl(var(--medium-yellow))"
+          fillOpacity={0.5}
+        />
         <ChartLegend className="mt-8" content={<ChartLegendContent />} />
       </RadarChart>
     </ChartContainer>

@@ -13,6 +13,49 @@ import { AvatarFallback } from "@radix-ui/react-avatar";
 import SeverityIcon from "@/components/severityIcon";
 
 const Home = () => {
+  const findingsData = [
+    { id: 1, name: "Critical", number: 500 },
+    { id: 2, name: "High", number: 300 },
+    { id: 3, name: "Medium", number: 400 },
+    { id: 4, name: "Low", number: 300 },
+  ];
+  const resolvedCardsData = [
+    {
+      id: 1,
+      title: "300 Resolved",
+      description: "since last scan",
+      number: "-5",
+      percentage: "-7%",
+    },
+    {
+      id: 2,
+      title: "600 New Findings",
+      description: "since last scan",
+      number: "-5",
+      percentage: "-7%",
+    },
+    {
+      id: 3,
+      title: "3 mins",
+      description: "last scan",
+      number: "+1.1",
+      percentage: "+22%",
+    },
+    {
+      id: 4,
+      title: "2.3 mins",
+      description: "avg scan",
+      number: "0.1",
+      percentage: "+1%",
+    },
+  ];
+  const top5PackagesData = [
+    { id: 1, name: "Common", number: 34, width: "100%" },
+    { id: 2, name: "FastInfoset-1.2.15", number: 93, width: "90%" },
+    { id: 3, name: "HikariCP-3.2.0", number: 49, width: "80%" },
+    { id: 4, name: "SCF-1.0", number: 87, width: "80%" },
+    { id: 5, name: "activation-1.1", number: 41, width: "64%" },
+  ];
   return (
     <DashboardLayout>
       <main className="flex space-x-2">
@@ -20,7 +63,7 @@ const Home = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
-                <p className="text-lg font-bold">60 Resolved</p>
+                <p className="text-lg font-bold">1500 Findings</p>
                 <div className="flex items-center space-x-2">
                   <p className="text-lg font-bold">+230</p>
                   <p className="text-xs text-success">+45%</p>
@@ -28,27 +71,27 @@ const Home = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex justify-between">
-              {[1, 2, 3, 4].map(() => (
-                <div>
-                  <SeverityIcon severity="critical" />
-                  <p className="text-xs text-muted-foreground">Critical</p>
-                  <p className="text-sm">500</p>
+              {findingsData?.map((el) => (
+                <div key={el.id}>
+                  <SeverityIcon severity={el.name.toLocaleLowerCase()} />
+                  <p className="text-xs text-muted-foreground">{el.name}</p>
+                  <p className="text-sm">{el.number}</p>
                 </div>
               ))}
             </CardContent>
           </Card>
           <div className="grid grid-cols-2 gap-2">
-            {[1, 2, 3, 4].map(() => (
-              <Card className="w-full">
+            {resolvedCardsData?.map((el) => (
+              <Card key={el.id} className="w-full">
                 <CardContent className="p-3">
-                  <p className="text-lg font-bold">2 Finding</p>
+                  <p className="text-lg font-bold">{el.title}</p>
                   <div className="flex items-center justify-between space-x-4">
                     <p className="text-xs text-muted-foreground">
-                      All time data
+                      {el.description}
                     </p>
                     <div className="flex items-center space-x-1 text-xs">
-                      <p className="font-bold">+230</p>
-                      <p className="text-success">+45%</p>
+                      <p className="font-bold">{el.number}</p>
+                      <p className="text-success">{el.percentage}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -67,13 +110,13 @@ const Home = () => {
                     </span>
                   </li>
                   <li className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>OSWAP 2017</span>
+                    <span>OSWAP 2021</span>
                     <span>
                       <MoonIcon />
                     </span>
                   </li>
                   <li className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>OSWAP 2017</span>
+                    <span>PCI DSS</span>
                     <span>
                       <MoonIcon />
                     </span>
@@ -89,18 +132,18 @@ const Home = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <p className="text-xs text-muted-foreground">Safe</p>
-                    <p className="text-sm font-bold">2983</p>
+                    <p className="text-sm font-bold">1232</p>
                     <p className="text-xs text-muted-foreground">(45%)</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Vulnerable</p>
-                    <p className="text-sm font-bold">22983</p>
+                    <p className="text-sm font-bold">1213</p>
                     <p className="text-xs text-muted-foreground">(55%)</p>
                   </div>
                 </div>
                 <div className="flex">
-                  <div className="bg-success w-6/12 h-4"></div>
-                  <div className="bg-danger w-7/12 h-4"></div>
+                  <div className="bg-success w-6/12 h-4 shadow-success"></div>
+                  <div className="bg-danger w-7/12 h-4 shadow-danger"></div>
                 </div>
               </div>
             </CardContent>
@@ -110,12 +153,20 @@ const Home = () => {
               <p className="text-lg font-bold">
                 Top 5 Packages with Vulnerabilities
               </p>
-              {[1, 2, 3, 4, 5].map(() => (
-                <div className="flex items-center justify-between space-x-4 space-y-4">
-                  <p className="text-xs text-muted-foreground">Common</p>
-                  <div className="flex justify-end items-center space-x-1 text-xs h-6 w-full bg-gradient-to-l from-primary">
-                    <p className="font-bold text-secondary text-right pr-2">
-                      +230
+              {top5PackagesData?.map((el) => (
+                <div
+                  key={el.id}
+                  className="flex items-center justify-between space-x-4 space-y-4"
+                >
+                  <p className="text-xs text-muted-foreground w-1/3">
+                    {el.name}
+                  </p>
+                  <div className=" space-x-1 text-xs h-6 w-2/3">
+                    <p
+                      className={`font-bold text-right pr-2 bg-gradient-to-l from-percentage-start to-percentage-end h-full flex justify-end items-center`}
+                      style={{ width: el.width }}
+                    >
+                      {el.number}
                     </p>
                   </div>
                 </div>
@@ -124,7 +175,7 @@ const Home = () => {
           </Card>
         </aside>
         <section className="flex-1">
-          <Card className="w-full">
+          <Card className="w-full gradient-background">
             <CardHeader className="font-bold">
               Finding Distribution Type
             </CardHeader>
@@ -132,30 +183,41 @@ const Home = () => {
               <div className="flex-1">
                 <VulnerabilityRadarChart />
               </div>
-              <Card>
-                <CardContent className="p-3">
-                  <p className="text-md font-bold">Code Findings</p>
-                  <p className="text-xs text-muted-foreground">
-                    from last scan
-                  </p>
-                  <p className="text-2xl font-bold py-4">300</p>
-                  {[1, 2, 3, 4].map(() => (
-                    <div className="flex items-center space-x-1 space-y-3">
-                      <SeverityIcon size={25} severity="critical" />
-
-                      <div>
-                        <p className="text-xs text-muted-foreground">
-                          Critical
-                        </p>
-                        <p className="text-sm">500</p>
-                      </div>
+              <div className="max-h-max">
+                <Card>
+                  <CardContent className="px-2 py-3">
+                    <p className="text-md font-bold">Code Findings</p>
+                    <p className="text-xs text-muted-foreground">
+                      from last scan
+                    </p>
+                    <div className="flex items-center space-x-2">
+                      <p className="text-2xl font-bold py-4">300</p>
+                      <p className="text-xs text-success">22%</p>
                     </div>
-                  ))}
-                </CardContent>
-              </Card>
+                    {findingsData?.map((el) => (
+                      <div
+                        key={el.id}
+                        className="flex items-center space-x-1 space-y-3"
+                      >
+                        <SeverityIcon
+                          size={25}
+                          severity={el.name.toLocaleLowerCase()}
+                        />
+
+                        <div>
+                          <p className="text-xs text-muted-foreground">
+                            {el.name}
+                          </p>
+                          <p className="text-sm"> {el.number}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
             </CardContent>
             <CardFooter className="block space-y-1">
-              <h3>Top 5 Code Finding</h3>
+              <h3>Top 5 Code Findings</h3>
               {[1, 2, 3].map(() => (
                 <Card className="w-full">
                   <CardContent className="p-4 grid grid-flow-col gap-24">

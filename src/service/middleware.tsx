@@ -17,7 +17,7 @@ const errorHandler = (error: any) => {
 const successHandler = (response: AxiosResponse) => {};
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   timeout: 8000,
 });
 
