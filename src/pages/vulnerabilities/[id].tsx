@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
+import Logo from "@/components/logo";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
@@ -34,17 +35,23 @@ export default function Home() {
 
   return (
     <DashboardLayout>
-      <Card className="h-screen">
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-start justify-center">
-              {vulnerability && (
-                <VulnerabilityForm vulnerability={vulnerability} />
-              )}
+      <div className="md:max-w-[600px] w-full mx-auto xl:p-12 relative">
+        <Logo
+          width={400}
+          className="absolute left-1/3 top-2/3 transform -translate-x-[70%] -translate-y-[85%] -z-10 opacity-25"
+        ></Logo>
+        <Card>
+          <CardContent>
+            <div className="space-y-4 p-4">
+              <div className="flex items-start justify-center">
+                {vulnerability && (
+                  <VulnerabilityForm vulnerability={vulnerability} />
+                )}
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </DashboardLayout>
   );
 }
