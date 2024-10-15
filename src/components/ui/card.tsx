@@ -6,7 +6,7 @@ const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div className="p-[2px] bg-gradient-to-r dark:from-blue-800 from-10% dark:via-blue-700 via-30% dark:to-blue-950 to-90% border-0 dark:shadow-[0_35px_60px_-15px_rgba(23,42,123,0.3)]">
+  <div className="p-[2px] h-fit bg-gradient-to-r dark:from-blue-800 from-10% dark:via-blue-700 via-30% dark:to-blue-950 to-90% border-0 dark:shadow-[0_35px_60px_-15px_rgba(23,42,123,0.3)]">
     <div
       ref={ref}
       className={cn(
