@@ -80,8 +80,8 @@ const Home = () => {
   ];
   return (
     <DashboardLayout>
-      <main className="flex space-x-2">
-        <aside className="space-y-2">
+      <main className="grid xl:grid-cols-4 xl:space-x-2 xl:space-y-0 space-y-2">
+        <aside className="space-y-2 xl:grid-col-span-1 w-full">
           <Card>
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
@@ -196,7 +196,7 @@ const Home = () => {
             </CardContent>
           </Card>
         </aside>
-        <section className="flex-1">
+        <section className="xl:col-span-3">
           <Card
             className={`w-full ${
               theme === "dark" ? "gradient-background" : ""
@@ -242,7 +242,7 @@ const Home = () => {
                 </Card>
               </div>
             </CardContent>
-            <CardFooter className="block space-y-1">
+            <CardFooter className="block space-y-1 h-96 overflow-y-auto">
               <h3>Top 5 Code Findings</h3>
               {[1, 2, 3].map((el) => (
                 <Card key={el} className="w-full">

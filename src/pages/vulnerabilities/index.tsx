@@ -24,6 +24,7 @@ import {
 } from "@/components/vulnerability/tables/use-vulnerability-table-filters";
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
+import Logo from "@/components/logo";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, res } = context;
@@ -64,59 +65,65 @@ const VulnerabilitiesTable = () => {
 
   return (
     <DashboardLayout>
-      <Card>
-        <CardContent>
-          <PageContainer>
-            <div className="space-y-4">
-              <div className="flex items-start justify-between">
-                <h3>{`Vulnerability (${vulnerabilities?.pagination.totalItems})`}</h3>
+      <div className="xl:max-w-[1200px] w-full mx-auto xl:p-12 relative">
+        <Logo
+          width={640}
+          className="absolute left-1/3 top-2/3 transform -translate-x-[85%] -translate-y-[95%] -z-10 opacity-25"
+        ></Logo>
+        <Card>
+          <CardContent>
+            <PageContainer>
+              <div className="space-y-4">
+                <div className="flex items-start justify-between">
+                  <h3>{`Vulnerability (${vulnerabilities?.pagination.totalItems})`}</h3>
 
-                <Button onClick={() => setOpen(true)}>
-                  <Plus className="mr-2 h-4 w-4" /> Add New
-                </Button>
-                <Modal
-                  isOpen={open}
-                  onClose={() => setOpen(false)}
-                  title="Upadate Or New"
-                >
-                  <VulnerabilityForm setOpenModal={setOpen} />
-                </Modal>
-              </div>
-              <Separator />
-
-              <div className="space-y-4 ">
-                <div className="flex flex-wrap items-center gap-4">
-                  <DataTableSearch
-                    searchKey="name"
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-                    setPage={setPage}
-                  />
-                  <DataTableFilterBox
-                    filterKey="severity"
-                    title="Severity"
-                    options={SEVERITY_OPTIONS}
-                    setFilterValue={setSeverityFilter}
-                    filterValue={severityFilter}
-                  />
-                  <DataTableResetFilter
-                    isFilterActive={isAnyFilterActive}
-                    onReset={resetFilters}
-                  />
+                  <Button onClick={() => setOpen(true)}>
+                    <Plus className="mr-2 h-4 w-4" /> Add New
+                  </Button>
+                  <Modal
+                    isOpen={open}
+                    onClose={() => setOpen(false)}
+                    title="Upadate Or New"
+                  >
+                    <VulnerabilityForm setOpenModal={setOpen} />
+                  </Modal>
                 </div>
-                {vulnerabilities && (
-                  <DataTable
-                    isLoading={vulnerabilityIsLoading}
-                    columns={columns}
-                    data={vulnerabilities.vulnerabilities}
-                    totalItems={vulnerabilities.pagination.totalItems}
-                  />
-                )}
+                <Separator />
+
+                <div className="space-y-4 ">
+                  <div className="flex flex-wrap items-center gap-4">
+                    <DataTableSearch
+                      searchKey="name"
+                      searchQuery={searchQuery}
+                      setSearchQuery={setSearchQuery}
+                      setPage={setPage}
+                    />
+                    <DataTableFilterBox
+                      filterKey="severity"
+                      title="Severity"
+                      options={SEVERITY_OPTIONS}
+                      setFilterValue={setSeverityFilter}
+                      filterValue={severityFilter}
+                    />
+                    <DataTableResetFilter
+                      isFilterActive={isAnyFilterActive}
+                      onReset={resetFilters}
+                    />
+                  </div>
+                  {vulnerabilities && (
+                    <DataTable
+                      isLoading={vulnerabilityIsLoading}
+                      columns={columns}
+                      data={vulnerabilities.vulnerabilities}
+                      totalItems={vulnerabilities.pagination.totalItems}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-          </PageContainer>
-        </CardContent>
-      </Card>
+            </PageContainer>
+          </CardContent>
+        </Card>
+      </div>
     </DashboardLayout>
   );
 };
